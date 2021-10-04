@@ -15,7 +15,7 @@ public class HomeController {
     @Value("${app.version}")
     private String appVersion;
 
-    @GetMapping("/version")
+    @GetMapping("/")
     public Map getVersion() {
         Map map = new HashMap<String, String>();
         map.put("app-version", appVersion);
