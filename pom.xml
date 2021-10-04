@@ -10,9 +10,9 @@
     </parent>
 
     <groupId>edu.klaus</groupId>
-    <artifactId>productEntity</artifactId>
+    <artifactId>product</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>productEntity</name>
+    <name>product</name>
 
     <description>Demo project for Spring Boot</description>
     <properties>
