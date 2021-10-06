@@ -1,14 +1,24 @@
-<nav class="navbar navbar-light bg-light">
+<nav class="navbar navbar-light" style="background-color: #6daf77;">
     <div class="container-fluid">
 
-        <button type="button" class="btn btn-outline-dark" (click)="navigateToProducts()">Products
-           
-        </button>
-        
+        <div class="btn-group">
+            <button type="button" class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Action
+            </button>
+            <ul class="dropdown-menu" >
+                <li><a class="dropdown-item" href="/owner/products">Products</a></li>
+                <li><a class="dropdown-item" href="/owner/categories">Categories</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Separated link</a></li>
+            </ul>
+        </div>
 
         <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <button class="btn btn-outline-dark" type="submit">Search</button>
         </form>
 
     </div>

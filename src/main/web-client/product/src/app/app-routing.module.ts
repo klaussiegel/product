@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProductComponent } from './components/product/product.component';
+import { CreateCategoryComponent } from './components/category/create-category/create-category.component';
+import { ListCategoryComponent } from './components/category/list-category/list-category.component';
+import { CreateProductComponent } from './components/product/create-product/create-product.component';
+import { ListingpageComponent } from './components/product/listingpage/listingpage.component';
 
 const routes: Routes = [
   {
@@ -9,8 +12,20 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'products',
-    component: ProductComponent
+    path: 'owner/products',
+    component: ListingpageComponent
+  },
+  {
+    path: 'owner/products/create',
+    component: CreateProductComponent
+  },
+  {
+    path: 'owner/categories',
+    component: ListCategoryComponent
+  },
+  {
+    path: 'owner/categories/create',
+    component: CreateCategoryComponent
   }
 ];
 

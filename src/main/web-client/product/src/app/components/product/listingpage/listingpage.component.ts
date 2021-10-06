@@ -4,10 +4,10 @@ import { ProductService } from 'src/app/services/product/product.service';
 
 @Component({
   selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss']
+  templateUrl: './listingpage.component.html',
+  styleUrls: ['./listingpage.component.scss']
 })
-export class ProductComponent implements OnInit {
+export class ListingpageComponent implements OnInit {
 
   public products: any;
 
@@ -28,7 +28,7 @@ export class ProductComponent implements OnInit {
   }
 
   navigateToCreate(){
-    this.router.navigate(['/products/create']);
+    this.router.navigate(['/owner/products/create']);
   }
 
 }
