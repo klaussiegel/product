@@ -8,4 +8,8 @@ public interface CategoryBCI {
     List<CategoryDTO> findAll();
 
     CategoryDTO getById(Long id);
+
+    CategoryDTO create(CategoryDTO categoryDTO);
+
+    Boolean delete(Long id);
 }

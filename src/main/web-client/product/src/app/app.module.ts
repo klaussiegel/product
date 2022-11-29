@@ -10,6 +10,14 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { CreateProductComponent } from './components/product/create-product/create-product.component';
 import { ListCategoryComponent } from './components/category/list-category/list-category.component';
 import { CreateCategoryComponent } from './components/category/create-category/create-category.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material/button';
+import { ConfirmDialog } from './components/confirmation-dialog/confirm-dialog';
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { InfoDialogComponent } from './components/info-dialog/info-dialog.component';
+import { LoginComponent } from './components/login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,14 +25,24 @@ import { CreateCategoryComponent } from './components/category/create-category/c
     NavbarComponent,
     CreateProductComponent,
     ListCategoryComponent,
-    CreateCategoryComponent
+    CreateCategoryComponent,
+    ConfirmDialog,
+    InfoDialogComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+		MatDialogModule,
+    MatToolbarModule
   ],
   providers: [ProductService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }

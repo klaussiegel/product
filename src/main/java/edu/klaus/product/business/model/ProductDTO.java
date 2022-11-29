@@ -7,6 +7,15 @@ public class ProductDTO {
     private Float price;
     private String description;
     private CategoryDTO categoryDTO;
+    private Long categoryId;
+
+    public Long getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
+    }
 
     public Long getId() {
         return id;

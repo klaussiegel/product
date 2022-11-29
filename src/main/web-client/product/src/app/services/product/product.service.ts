@@ -14,8 +14,13 @@ export class ProductService {
     return this.http.get('/api/products')
   }
 
-  getById(id: number): Observable<ProductTO> {
-    return this.http.get('/api/products/' + id)
+  delete(id: number): Observable<any> {
+    return this.http.delete('/api/products/' + id)
+  }
+
+  create(product: ProductTO): Observable<any> {
+    console.log(product)
+    return this.http.post<ProductTO>('/api/products/create/', product);
   }
 
 }

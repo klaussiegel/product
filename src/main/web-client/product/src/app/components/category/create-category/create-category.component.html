@@ -1,15 +1,23 @@
-<form id="createFormId">
+<form id="createFormId" [formGroup]="createCategoryForm" (ngSubmit)="createCategory()">
     <h2 style="text-align: center;">Add category</h2>
+
     <div class="mb-3">
         <label for="name" class="form-label">Name</label>
-        <input required="true" type="text" class="form-control" id="name">
+        <input type="text" formControlName="name" id="name" class="form-control">
+
+    </div>
+    <div *ngIf="createCategoryForm.get('name')?.hasError('required') && createCategoryForm.get('name')?.touched" class="alert alert-danger">
+        Name is required
     </div>
 
     <div class="mb-3">
         <label for="description" class="form-label">Description</label>
-        <input required="true" type="text" class="form-control" id="description">
+        <input type="text" formControlName="description" id="description" class="form-control">
+    </div>
+    <div *ngIf="createCategoryForm.get('description')?.hasError('required') && createCategoryForm.get('description')?.touched" class="alert alert-danger">
+        Description is required
     </div>
 
-    <button type="submit" class="btn btn-success">Create</button>
-    
+    <button type="submit" class="btn btn-success" [disabled]="!createCategoryForm.valid">Create</button>
+
 </form>

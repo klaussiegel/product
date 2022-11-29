@@ -1,19 +1,9 @@
-<nav class="navbar navbar-light" style="background-color: #6daf77;">
+<nav class="navbar navbar-light" style="background-color: #f7f6f8;">
     <div class="container-fluid">
 
         <div class="btn-group">
-            <button type="button" class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Action
-            </button>
-            <ul class="dropdown-menu" >
-                <li><a class="dropdown-item" href="/owner/products">Products</a></li>
-                <li><a class="dropdown-item" href="/owner/categories">Categories</a></li>
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
-            </ul>
+            <button mat-stroked-button (click)='toProducts()'>Products</button>
+            <button mat-stroked-button (click)='toCategories()'>Categories</button>
         </div>
 
         <form class="d-flex">

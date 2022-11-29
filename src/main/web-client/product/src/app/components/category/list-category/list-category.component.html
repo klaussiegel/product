@@ -1,5 +1,4 @@
-
-<button type="button" class="btn btn-outline-dark" (click) = "navigateToCreate()">Create Category</button>
+<button type="button" class="btn btn-outline-dark" (click)="navigateToCreate()">Create Category</button>
 <div class="table-responsive">
   <table class="table table-hover">
     <thead class="table-light ">
@@ -7,6 +6,7 @@
         <th scope="col">#</th>
         <th scope="col">Name</th>
         <th scope="col">Description</th>
+        <th scope="col">Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -14,6 +14,10 @@
         <td scope="row ">{{i}}</td>
         <td scope="row">{{cat.name}}</td>
         <td scope="row">{{cat.description}}</td>
+        <td scope="row">
+          <button mat-raised-button color="warn" (click) = "openDialog(cat.id)">Delete</button>
+        </td>
+
       </tr>
     </tbody>
   </table>

@@ -4,11 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "products")
-public class ProductEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    protected Long id;
+public class ProductEntity extends BaseEntity{
 
     @Column
     private String name;
@@ -26,14 +22,6 @@ public class ProductEntity {
     @ManyToOne
     @JoinColumn(name = "category_id")
     CategoryEntity category;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

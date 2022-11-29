@@ -27,12 +27,12 @@ public class ProductMapper {
     public ProductEntity mapToEntity(ProductDTO productDTO) {
         ProductEntity productEntity = new ProductEntity();
 
-        productEntity.setId(productDTO.getId());
+//        productEntity.setId(productDTO.getId());
         productEntity.setName(productDTO.getName());
         productEntity.setStock(productDTO.getStock());
         productEntity.setPrice(productDTO.getPrice());
         productEntity.setDescription(productDTO.getDescription());
-        productEntity.setCategory(categoryMapper.mapToEntity(productDTO.getCategoryDTO()));
+//        productEntity.setCategory(categoryMapper.mapToEntity(productDTO.getCategoryDTO()));
 
         return productEntity;
     }

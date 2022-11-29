@@ -1,35 +1,47 @@
-<form id="createFormId"> 
-    <h2 style="text-align: center;">Add product</h2>
-    <div class="mb-3">
-      <label for="name" class="form-label">Name</label>
-      <input required="true" type="text" class="form-control" id="name" >
-    </div>
+<form id="createFormId" [formGroup]="createProductForm" (ngSubmit)="createProduct()">
+  <h2 style="text-align: center;">Add product</h2>
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input formControlName="productName" type="text" class="form-control" id="name">
+  </div>
+  <div *ngIf="createProductForm.get('productName')?.hasError('required') && createProductForm.get('productName')?.touched" class="alert alert-danger">
+    Name is required
+  </div>
 
-    <div class="mb-3">
-        <label for="description" class="form-label">Description</label>
-        <input  required="true" type="text" class="form-control" id="description" >
-      </div>
+  <div class="mb-3">
+    <label for="description" class="form-label">Description</label>
+    <input formControlName="productDescription" type="text" class="form-control" id="description">
+  </div>
+  <div *ngIf="createProductForm.get('productDescription')?.hasError('required') && createProductForm.get('productDescription')?.touched" class="alert alert-danger">
+    Description is required
+  </div>
 
-      <div class="mb-3">
-        <label for="price" class="form-label">Price</label>
-        <input required="true" type="text" class="form-control" id="price" >
-      </div>
+  <div class="mb-3">
+    <label for="price" class="form-label">Price</label>
+    <input formControlName="productPrice" type="text" class="form-control" id="price">
+  </div>
+  <div *ngIf="createProductForm.get('productPrice')?.hasError('required') && createProductForm.get('productPrice')?.touched" class="alert alert-danger">
+    Price is required
+  </div>
 
-      <div class="mb-3">
-        <label for="stock" class="form-label">Stock</label>
-        <input required="true" type="text" class="form-control" id="stock" >
-      </div>
+  <div class="mb-3">
+    <label for="stock" class="form-label">Stock</label>
+    <input formControlName="productStock" type="text" class="form-control" id="stock">
+  </div>
+  <div *ngIf="createProductForm.get('productStock')?.hasError('required') && createProductForm.get('productStock')?.touched" class="alert alert-danger">
+    Stock is required
+  </div>
 
-      <div class="mb-3">
-        <label for="category" class="form-label">Category</label>
-        <input required="true" type="text" class="form-control" id="category" >
-      </div>
-    
+  <select class="form-select" formControlName="categoryId" >
+    <!-- <option selected>Select a category</option> -->
+    <option [value]="category.id"  *ngFor="let category of categories">{{category.name}}</option>
+  </select>
 
-    <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="enable">
-      <label class="form-check-label" for="enable">Enable</label>
-    </div>
 
-    <button type="submit" class="btn btn-success">Create</button>
-  </form>
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="enable">
+    <label class="form-check-label" for="enable">Enable</label>
+  </div>
+
+  <button type="submit" class="btn btn-success" [disabled]="!createProductForm.valid">Create</button>
+</form>

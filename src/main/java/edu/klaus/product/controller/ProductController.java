@@ -2,13 +2,11 @@ package edu.klaus.product.controller;
 
 import edu.klaus.product.business.bc.ProductBC;
 import edu.klaus.product.business.model.ProductDTO;
+import edu.klaus.product.util.ResponseMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,10 +19,21 @@ public class ProductController {
     @Autowired
     private ProductBC productBC;
 
+    @GetMapping(value = "/queryparamExamle")
+    String queryParamExample(@RequestParam String id, @RequestParam String name) {
+        return "id = " + id + ", name = " + name;
+    }
+
+    @GetMapping(value = "/getAllByName/{name}")
+    public List<ProductDTO> getAllByName(@PathVariable("name") String name) {
+        log.info("endpoint: getAllByName/" + name);
+        return productBC.findAllbyProductName(name);
+    }
+
     @GetMapping
     public List<ProductDTO> findAll() {
         log.info("info in find all");
-        return productBC.findAll();
+        return productBC.findAll();//claud development
     }
 
     @GetMapping(value = "/{id}")
@@ -32,19 +41,33 @@ public class ProductController {
         return productBC.getById(id);
     }
 
-//    @PostMapping
-//    public ProductEntity create(@RequestBody ProductEntity productEntity) {
-//        return productRepository.save(productEntity);
-//    }
-//
-//    @PutMapping(value = "{id}")
-//    public void update(@PathVariable Long id, @RequestBody ProductEntity productEntity) {
-//        productRepository.saveAndFlush(productEntity);
-//    }
-//
-//    @DeleteMapping(value = "/{id}")
-//    public void delete(@PathVariable Long id) {
-//        productRepository.deleteById(id);
-//    }
+    @DeleteMapping(value = "/{id}")
+    public ResponseMessage delete(@PathVariable Long id) {
+        Boolean deleted = productBC.delete(id);
+        ResponseMessage responseMessage = new ResponseMessage();
+        if (deleted) {
+            responseMessage.setMessage("The product has been successfully deleted!");
+        } else {
+            responseMessage.setMessage("The product was not deleted!");
+        }
+        return responseMessage;
+    }
+
+    @PostMapping(value = "/create")
+    public ResponseMessage create(@RequestBody ProductDTO productDTO) {
+
+        ProductDTO created = productBC.create(productDTO);
+
+        ResponseMessage responseMessage = new ResponseMessage();
+
+        if (created.getId().equals(null)) {
+            responseMessage.setMessage("The product was NOT created!");
+        } else {
+            responseMessage.setMessage("The product was created successfully!");
+        }
+
+        return responseMessage;
+    }
+
 
 }

@@ -21,4 +21,5 @@ public class HomeController {
         map.put("app-version", appVersion);
         return map;
     }
+
 }

@@ -4,6 +4,7 @@ import edu.klaus.product.business.bci.CategoryBCI;
 import edu.klaus.product.business.mapping.CategoryMapper;
 import edu.klaus.product.business.model.CategoryDTO;
 import edu.klaus.product.repository.CategoryRepository;
+import edu.klaus.product.repository.entity.CategoryEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -27,5 +28,23 @@ public class CategoryBC implements CategoryBCI {
     @Override
     public CategoryDTO getById(Long id) {
         return categoryMapper.mapToDTO(categoryRepository.getById(id));
+    }
+
+    @Override
+    public CategoryDTO create(CategoryDTO categoryDTO) {
+        CategoryEntity categoryEntity = categoryRepository.save(categoryMapper.mapToEntity(categoryDTO));
+        return categoryMapper.mapToDTO(categoryEntity);
+    }
+
+    @Override
+    public Boolean delete(Long id) {
+        try {
+            CategoryEntity categoryEntity = categoryRepository.getById(id);
+            categoryRepository.delete(categoryEntity);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+
     }
 }

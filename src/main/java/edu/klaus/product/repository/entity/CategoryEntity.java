@@ -6,10 +6,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "categories")
-public class CategoryEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class CategoryEntity extends BaseEntity{
 
     @Column
     private String name;
@@ -19,14 +16,6 @@ public class CategoryEntity {
 
     @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
     private List<ProductEntity> productEntityList = new ArrayList<>();
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
